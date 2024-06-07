@@ -1,0 +1,6 @@
+* Image processing seems easy when seen from human eye, but it is much more difficult to achieve same with computer
+* Computer graphics, in contrast to digital image processing, concentrates on the synthesis of digital 
+images from geometrical descriptions such as three-dimensional object models [22, 27, 77].
+* Pattern rcognition is primarily a mathematical discipline and has been responsible for techniques 
+such as probabilistic modeling, clusering, decision trees, or principal component analysis which are used to discover pattern in data and signals. 
+*

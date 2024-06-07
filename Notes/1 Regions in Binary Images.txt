@@ -1,0 +1,62 @@
+- In binary image a pixel can take on exactly one of two values.
+- these values are often thought of as representing the 'foreground' and 'background' in the image. 
+- An object is a group of touching foreground pixels; that is, connected binary region. 
+
+# Finding image regions
+- Region labeling and Region coloring are the main process wehere we determine the location of a pixel in a region, number of regions and the location of the regions. 
+- Neighboring pixels are pieced together in a stepwise manner to build regions in which all pixels within that region are assigned a unique  number ("lable") for identification
+- There two methods for labeling 1. Flood filling, 2. Sequential region marking. 
+
+1. Flood Filling 
+----------------------
+A region is filled in all directions starting from a single point or seed within the region
+
+2. Sequential Region marking
+-----------------------------
+Image is traversed from top to bottom, marking regions as they are encountered. 
+
+Floood Filling
+---------------------
+Search for an unmarked foreground pixel and then fill (visit and mark) all the rest of the neighboring piel in its region. 
+
+Algorithm 1 Region marking
+----------------------------
+REGIONLABELING(I)
+    I: binaryImage, I(u,v) = 0: background, I(u,v) = 1: foreground
+    The Image I is labeled (destructively modified) and returned
+
+    Let m <- 2                    -> Value of the next label to be assigned
+    for all image coordinate (u,v) do 
+        if I(u,v) = 1 THEN 
+            FLOODFILL(I, u, v, m)
+            m <- m + 1
+        RETURN the labeled image I 
+
+FLOODFILLING (I, u, v, label)
+    Create Empty Stack Search
+    Put the Seed coordinate (u,v) on to the stack: PUSH(S,(u,v))
+    while S is not empty do 
+        Get the next cooridinate from the top of the stack: 
+            (x,y) <- POP (S)
+        if (x,y) is inside the image and I(x,y) == 1 then 
+        SET I(x,y) <-label 
+        PUSH (S, (x+1, y))
+        PUSH (X, (x, y+1))
+        PUSH (S, (x-1, y))
+        PUSH (S, (x, y-1))
+        
+    return 
+
+
+    SEQUENTIAL REGION LABELING
+
+    - it is a non-recursive technique. 
+    - consists of 2 steps: 
+        1. A preliminary labeling of the image regions and
+        2. Resolving cases where more than one label occurs (ie has been assigned in the previous step) in the same region. 
+    - Relatively complex
+    - The 2nd step is moderate memory consuming so it is a good choice under limited memory conditions. 
+    - Not an issue in modern computers
+
+    STEP 1: Initial labeling
+    
