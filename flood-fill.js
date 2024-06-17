@@ -1,4 +1,4 @@
-function breathFirstFloodFill(imgBinary, point, label, width, height) {
+function breathFirstFloodFill(board,imgBinary, point, label, width, height) {
     const queue = [];
     queue.unshift(point);
     const floodResult = {
@@ -10,8 +10,8 @@ function breathFirstFloodFill(imgBinary, point, label, width, height) {
         const n = queue.pop();
         const u = n.x;
         const v = n.y;
-        const pos = imgBinary.getPosition(u,v);
-        if ((u >=0) && (u < width) && (v >=0) && (v<height) && (imgBinary.getPixelValue(u, v) === 1) && (visitedPosition.indexOf(pos) < 0)) {
+        const pos = board.getPosition([u,v]);
+        if ((u >=0) && (u < width) && (v >=0) && (v<height) && (imgBinary[pos] === 1) && (visitedPosition.indexOf(pos) < 0)) {
             floodResult.points.push(n);
             queue.unshift(new Point (u+1, v));
             queue.unshift(new Point (u, v+1));
@@ -23,7 +23,7 @@ function breathFirstFloodFill(imgBinary, point, label, width, height) {
     return floodResult;
 }
 
-function depthFirstFloodFill(imgBinary, point, label, width, height) {
+function depthFirstFloodFill(board,imgBinary, point, label, width, height) {
     const stack = [];
     stack.push(point);
     const floodResult = {
@@ -35,8 +35,8 @@ function depthFirstFloodFill(imgBinary, point, label, width, height) {
         const n = stack.pop();
         const u = n.x;
         const v = n.y;
-        const pos = imgBinary.getPosition(u,v);
-        if ((u >=0) && (u < width) && (v >=0) && (v<height) && (imgBinary.getPixelValue(u, v) === 1) && (visitedPosition.indexOf(pos) < 0)) {
+        const pos = board.getPosition([u,v]);
+        if ((u >=0) && (u < width) && (v >=0) && (v<height) && (imgBinary[pos] === 1) && (visitedPosition.indexOf(pos) < 0)) {
             floodResult.points.push(n);
             stack.push(new Point (u+1, v));
             stack.push(new Point (u, v+1));

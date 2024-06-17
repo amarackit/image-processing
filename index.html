@@ -4,12 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Processing</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0
+        }
+        .flex {
+            margin:20px 20px 20px 20px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        button {
+            width: 200px;
+            padding: 4px;
+        }
+    </style>
 </head>
-<body>
-    <canvas id="imageProcessing" width="700" height="700"></canvas>
+<body class="flex">
+    <div>
+        <canvas id="imageProcessing" width="700" height="700"></canvas>
+    </div>
+    <div>
+        <h2>Algorithms</h2>
+        <ul>
+            <li><input type="radio" name="algorithm" id="breadthFirst" checked> Breath First Flood Fill</li>
+            <li><input type="radio" name="algorithm" id="depthFirst"> Depth First Flood Fill</li>
+        </ul>
+    </div>
 </body>
-<script src="image-data-to-binary.js"></script>
 <script src="flood-fill.js"></script>
 <script src="point.js"></script>
-<script src="main.js"></script>
+<script src="binary-image-board.js"></script>
+<script src="mouse-events.js"></script>
+<script src="ip-keyboard-event.js"></script>
+<script src="floodfill_implementation.js"></script>
+<script src="app.js"></script>
+<script src="index.js"></script>
 </html>
